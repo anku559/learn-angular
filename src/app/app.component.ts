@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -115,7 +116,7 @@ function shufflePasswordArray(arrays: string[]) {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -201,5 +202,6 @@ Symbols: ${this.includeSymbols}`);
     }
 
     this.password = password;
+    console.log(this.password);
   }
 }
