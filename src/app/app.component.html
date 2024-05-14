@@ -1,77 +1,116 @@
-<h1>Password Generator</h1>
+<div class="container">
+  <div class="column is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
 
-<div class="">
-  <label for="inputLength">
-    Enter Length:
-    <input
-      id="inputLength"
-      type="number"
-      min="4"
-      max="1024"
-      [value]="inputLength"
-      (input)="onChangePasswordLength($event)"
-    />
-  </label>
-</div>
+      <div class="field">
+        <label for="inputLength">
+          Enter Length:
+          <input
+            class="input"
+            id="inputLength"
+            type="number"
+            min="4"
+            max="1024"
+            [value]="inputLength"
+            (input)="onChangePasswordLength($event)"
+          />
+        </label>
+      </div>
 
-<div class="">
-  <label for="includeUpperCase">
-    Use Upper Case (A, B, C...)
-    <input
-      id="includeUpperCase"
-      type="checkbox"
-      [checked]="includeUpperCase"
-      (change)="onChangeSelectors(SelectorTypes.UPPER)"
-    />
-  </label>
-</div>
+      <div class="field">
+        <div class="control">
+          <label for="includeUpperCase">
+            Use Upper Case (A, B, C...)
+            <input
+              class="checkbox"
+              id="includeUpperCase"
+              type="checkbox"
+              [checked]="includeUpperCase"
+              (change)="onChangeSelectors(SelectorTypes.UPPER)"
+            />
+          </label>
+        </div>
+      </div>
 
-<div class="">
-  <label for="includeLowerCase">
-    Use Lower Case (a, b, c...)
-    <input
-      id="includeLowerCase"
-      type="checkbox"
-      [checked]="includeLowerCase"
-      (change)="onChangeSelectors(SelectorTypes.LOWER)"
-    />
-  </label>
-</div>
+      <div class="field">
+        <div class="control">
+          <label for="includeLowerCase">
+            Use Lower Case (a, b, c...)
+            <input
+              class="checkbox"
+              id="includeLowerCase"
+              type="checkbox"
+              [checked]="includeLowerCase"
+              (change)="onChangeSelectors(SelectorTypes.LOWER)"
+            />
+          </label>
+        </div>
+      </div>
 
-<div class="">
-  <label for="includeNumbers">
-    Use Numbers (1, 2, 3 ...)
-    <input
-      id="includeNumbers"
-      type="checkbox"
-      [checked]="includeNumbers"
-      (change)="onChangeSelectors(SelectorTypes.NUMBER)"
-    />
-  </label>
-</div>
+      <div class="field">
+        <div class="control">
+          <label for="includeNumbers">
+            Use Numbers (1, 2, 3 ...)
+            <input
+              class="checkbox"
+              id="includeNumbers"
+              type="checkbox"
+              [checked]="includeNumbers"
+              (change)="onChangeSelectors(SelectorTypes.NUMBER)"
+            />
+          </label>
+        </div>
+      </div>
 
-<div class="">
-  <label for="includeSymbols">
-    Use Special Symbols (!, &#64;, # ...)
-    <input
-      id="includeSymbols"
-      type="checkbox"
-      [checked]="includeSymbols"
-      (change)="onChangeSelectors(SelectorTypes.SYMBOL)"
-    />
-  </label>
-</div>
+      <div class="field">
+        <div class="control">
+          <label for="includeSymbols">
+            Use Special Symbols (!, &#64;, # ...)
+            <input
+              class="checkbox"
+              id="includeSymbols"
+              type="checkbox"
+              [checked]="includeSymbols"
+              (change)="onChangeSelectors(SelectorTypes.SYMBOL)"
+            />
+          </label>
+        </div>
+      </div>
 
-<div>
-  <button type="button" (click)="onButtonClick()">Generate</button>
-</div>
+      <div>
+        <button
+          class="button is-link is-fullwidth"
+          [disabled]="
+            !(
+              inputLength &&
+              (includeUpperCase ||
+                includeUpperCase ||
+                includeSymbols ||
+                includeNumbers)
+            )
+          "
+          type="button"
+          (click)="onButtonClick()"
+        >
+          Generate
+        </button>
+      </div>
 
-<div class="">
-  <label for="passwordOutput">
-    Password:
-    <input id="passwordOutput" type="text" [value]="password" />
-  </label>
+      <div class="box">
+        <label for="passwordOutput">
+          Password:
+          <input
+            class="input"
+            id="passwordOutput"
+            type="text"
+            [value]="password"
+          />
+        </label>
 
-  <br />
-  <input id="passwordOutput" type="text" value="{{ password }}" />
+        <!-- <br />
+  <input id="passwordOutput" type="text" value="{{ password }}" /> -->
+      </div>
+    </div>
+  </div>
 </div>
