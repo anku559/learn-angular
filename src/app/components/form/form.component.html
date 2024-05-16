@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="column is-centered">
+    <div class="box column is-one-third">
+      <div class="m-5">
+        <h1 class="title has-text-centered">{{ formText }}</h1>
+
+        @for (input of formFields; track $index) {
+
+        <!-- firstName -->
+        @if( input.field === inputFields.firstName || input.field ===
+        inputFields.middleName || input.field === inputFields.lastName ) {
+        <div class="field">
+          <div class="control">
+            <input
+              class="input"
+              [type]="input.type"
+              [value]="input.value"
+              [placeholder]="input.display"
+              (input)="getInputFieldData($event, input.field)"
+            />
+          </div>
+        </div>
+        }
+
+        <!-- email -->
+        @if(input.field === inputFields.email) {
+        <div class="field">
+          <div class="control">
+            <input
+              class="input"
+              [type]="input.type"
+              [placeholder]="input.display"
+              (input)="getInputFieldData($event, input.field)"
+            />
+          </div>
+        </div>
+        }
+
+        <!-- username -->
+        @if(input.field === inputFields.username) {
+        <div class="field">
+          <div class="control">
+            <input
+              required="true"
+              class="input"
+              [type]="input.type"
+              [placeholder]="input.display"
+              (input)="getInputFieldData($event, input.field)"
+            />
+          </div>
+        </div>
+        }
+
+        <!-- age -->
+        @if(input.field === inputFields.age) {
+        <div class="field">
+          <div class="control">
+            <input
+              class="input"
+              [type]="input.type"
+              [placeholder]="input.display"
+              [min]="input.min"
+              [max]="input.max"
+              (input)="getInputFieldData($event, input.field)"
+            />
+          </div>
+        </div>
+        } @if(input.field === inputFields.dateOfBirth) {
+        <div class="field">
+          <div class="control">
+            <input
+              class="input"
+              [type]="input.type"
+              [placeholder]="input.display"
+              [min]="input.min"
+              [max]="input.max"
+              (input)="getInputFieldData($event, input.field)"
+            />
+          </div>
+        </div>
+        } }
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="column is-centered">
+    <div class="box column is-one-third">
+      <div class="m-5">
+        <h1 class="title has-text-centered">Output</h1>
+
+        @for (input of formFields; track $index) {
+        <div class="field">
+          <div class="control">
+            <!-- Using TitleCase Pipe -->
+            <p>{{ input.value?.toString() | titlecase }}</p>
+            <p>{{ input.value?.toString() | uppercase }}</p>
+            <p>{{ input.value?.toString() | lowercase }}</p>
+
+            <p>{{ input.value?.toString() | date }}</p>
+            <p>{{ input.value?.toString() | date : "dd, MMMM y" }}</p>
+
+            <p>{{ input.value?.toString() | currency }}</p>
+            <p>{{ input.value?.toString() | currency : "INR" }}</p>
+            <h1 [innerHtml]="input.value"></h1>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
